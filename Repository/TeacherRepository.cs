@@ -1,6 +1,7 @@
 ﻿using LanguageCourses.Data;
 using LanguageCourses.Interfaces;
 using LanguageCourses.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LanguageCourses.Repository
 {
@@ -13,32 +14,36 @@ namespace LanguageCourses.Repository
         }
         public bool Add(Teacher teacher)
         {
-            throw new NotImplementedException();
+            _context.Add(teacher);
+            return Save();
         }
 
         public bool Delete(Teacher teacher)
         {
-            throw new NotImplementedException();
+            _context.Remove(teacher);
+            return Save();
         }
 
-        public Task<IEnumerable<Teacher>> GetAllTeachers(Teacher teacher)
+        public async Task<IEnumerable<Teacher>> GetAllTeachers()
         {
-            throw new NotImplementedException();
+            return await _context.Teachers.ToListAsync();
         }
 
-        public Task<Teacher> GetTeacherById(int id)
+        public async Task<Teacher> GetTeacherById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Teachers.SingleOrDefaultAsync(t => t.Id == id);
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
         }
 
         public bool Update(Teacher teacher)
         {
-            throw new NotImplementedException();
+            _context.Update(teacher);
+            return Save();
         }
     }
 }
