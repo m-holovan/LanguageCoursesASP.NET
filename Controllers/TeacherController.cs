@@ -1,5 +1,6 @@
 ﻿using LanguageCourses.Data;
 using LanguageCourses.Interfaces;
+using LanguageCourses.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LanguageCourses.Controllers
@@ -11,10 +12,20 @@ namespace LanguageCourses.Controllers
         {
             _teacherRepository = teacherRepository;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var teachers = _teacherRepository.GetAllTeachers();
+            var teachers = await _teacherRepository.GetAllTeachers();
             return View(teachers);
+        }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            var teacher = await _teacherRepository.GetTeacherById(id);
+            if (teacher == null)
+            {
+                return View("Error");
+            }
+            return View(teacher);
         }
     }
 }

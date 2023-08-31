@@ -18,6 +18,7 @@ namespace LanguageCourses
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
             builder.Services.AddScoped<IPhotoService, PhotoService>();
+            builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
             builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
