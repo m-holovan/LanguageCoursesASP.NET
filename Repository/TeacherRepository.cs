@@ -31,7 +31,12 @@ namespace LanguageCourses.Repository
 
         public async Task<Teacher> GetTeacherById(int id)
         {
-            return await _context.Teachers.SingleOrDefaultAsync(t => t.Id == id);
+            return await _context.Teachers.Include(a => a.Address).SingleOrDefaultAsync(t => t.Id == id);
+        }
+
+        public async Task<Teacher> GetTeacherByIdNoTracking(int id)
+        {
+            return await _context.Teachers.Include(a => a.Address).AsNoTracking().SingleOrDefaultAsync(t => t.Id == id);
         }
 
         public bool Save()
