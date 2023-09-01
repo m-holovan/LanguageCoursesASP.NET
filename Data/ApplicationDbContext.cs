@@ -1,6 +1,5 @@
 ﻿using LanguageCourses.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 
 namespace LanguageCourses.Data
 {
