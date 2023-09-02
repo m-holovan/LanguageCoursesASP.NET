@@ -2,8 +2,11 @@ using CloudinaryDotNet;
 using LanguageCourses.Data;
 using LanguageCourses.Helpers;
 using LanguageCourses.Interfaces;
+using LanguageCourses.Models;
 using LanguageCourses.Repository;
 using LanguageCourses.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace LanguageCourses
@@ -24,12 +27,18 @@ namespace LanguageCourses
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+            builder.Services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddMemoryCache();
+            builder.Services.AddSession();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             var app = builder.Build();
 
             if (args.Length == 1 && args[0].ToLower() == "seeddata")
             {
-                Seed.SeedData(app);
+                //Seed.SeedUsersAndRolesAsync(app);
+                //Seed.SeedData(app);
             }
 
             // Configure the HTTP request pipeline.
