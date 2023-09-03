@@ -9,7 +9,7 @@ namespace LanguageCourses.Models
         public Address? Address { get; set; }
 
         [ForeignKey("Address")]
-        public int AddressId { get; set; }
+        public int? AddressId { get; set; }
         public string? LvlOfLanguage { get; set; }
         public ICollection<Course> Courses { get; set; }
     }
