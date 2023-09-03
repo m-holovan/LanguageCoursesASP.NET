@@ -74,8 +74,9 @@ namespace LanguageCourses.Controllers
             {
                 return View(registerVM);
             }
-
+            //Check user`s email
             var user = await _userManager.FindByEmailAsync(registerVM.Email);
+            //In case if user with this email already exist
             if (user != null)
             {
                 TempData["Error"] = "User with this email already exist.";
@@ -87,9 +88,9 @@ namespace LanguageCourses.Controllers
                 Email = registerVM.Email,
                 UserName = registerVM.Email
             };
-
+            //Try to add user to database
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
-
+            //In case if everything good, we add role for user
             if (newUserResponse.Succeeded)
             {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
