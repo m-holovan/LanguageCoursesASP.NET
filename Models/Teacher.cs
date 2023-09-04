@@ -18,5 +18,9 @@ namespace LanguageCourses.Models
         public int AddressId { get; set; }
         public Address Address { get; set; }
         public string Image { get; set; }
+
+        [ForeignKey("User")]
+        public string? UserId { get; set; }
+        public User? User { get; set; }
     }
 }
