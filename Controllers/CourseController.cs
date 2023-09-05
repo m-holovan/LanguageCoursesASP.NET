@@ -11,11 +11,13 @@ namespace LanguageCourses.Controllers
     {
         private readonly ICourseRepository _courseRepository;
         private readonly IPhotoService _photoService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CourseController(ICourseRepository courseRepository, IPhotoService photoService)
+        public CourseController(ICourseRepository courseRepository, IPhotoService photoService, IHttpContextAccessor httpContextAccessor)
         {
             _courseRepository = courseRepository;
             _photoService = photoService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IActionResult> Index()
@@ -32,7 +34,9 @@ namespace LanguageCourses.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var curUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var createCourseViewModel = new CreateCourseViewModel { UserId = curUserId };
+            return View(createCourseViewModel);
         }
 
         [HttpPost]
@@ -47,6 +51,8 @@ namespace LanguageCourses.Controllers
                     Title = courseVM.Title,
                     Description = courseVM.Description,
                     Image = result.Url.ToString(),
+                    UserId = courseVM.UserId,
+                    CourseCategory = courseVM.CourseCategory,
                     Address = new Address
                     {
                         City = courseVM.Address.City,
@@ -68,6 +74,7 @@ namespace LanguageCourses.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var course = await _courseRepository.GetCourseByIdAsync(id);
+            var curUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
             if (course == null)
             {
                 return View("Error");
@@ -80,6 +87,7 @@ namespace LanguageCourses.Controllers
                 Address = course.Address,
                 CourseCategory = course.CourseCategory,
                 URL = course.Image,
+                UserId = curUserId
             };
             return View(courseVM);
         }
@@ -117,7 +125,8 @@ namespace LanguageCourses.Controllers
                     AddressId = courseVM.AddressId,
                     Address = courseVM.Address,
                     CourseCategory = courseVM.CourseCategory,
-                    Image = photo.Url.ToString()
+                    Image = photo.Url.ToString(),
+                    UserId = courseVM.UserId
                 };
 
                 _courseRepository.Update(newCourse);

@@ -11,5 +11,6 @@ namespace LanguageCourses.ViewModels
         public Address Address { get; set; }
         public IFormFile Image { get; set; }
         public CourseCategory CourseCategory { get; set; }
+        public string UserId { get; set; }
     }
 }

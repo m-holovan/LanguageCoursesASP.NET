@@ -17,16 +17,16 @@ namespace LanguageCourses.Repository
         }
         public async Task<List<Course>> GetAllUserCourses()
         {
-            var curUser = _httpContextAccessor.HttpContext?.User;
-            var userCourses = _context.Courses.Where(c => c.User.Id == curUser.ToString());
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var userCourses = _context.Courses.Where(c => c.User.Id == curUser);
 
             return userCourses.ToList();
         }
 
         public async Task<List<Teacher>> GetAllUserTeacher()
         {
-            var curUser = _httpContextAccessor.HttpContext?.User;
-            var userTeachers = _context.Teachers.Where(t => t.User.Id == curUser.ToString());
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var userTeachers = _context.Teachers.Where(t => t.User.Id == curUser);
 
             return userTeachers.ToList();
         }

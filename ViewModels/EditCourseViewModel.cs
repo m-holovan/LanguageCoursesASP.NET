@@ -13,5 +13,6 @@ namespace LanguageCourses.ViewModels
         public IFormFile Image { get; set; }
         public string? URL { get; set; }
         public CourseCategory CourseCategory { get; set; }
+        public string UserId { get; set; }
     }
 }
