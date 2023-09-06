@@ -10,11 +10,12 @@ namespace LanguageCourses.ViewModels
 
         [Required]
         [DataType(DataType.Password)]
+        [RegularExpression(@"((?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})", ErrorMessage = "The password must contain one capital letter, one special character.")]
         public string Password { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Password are not the same.")]
+        [Compare("Password", ErrorMessage = "Passwords are not the same.")]
         public string ConfirmPassword { get; set; }
     }
 }
