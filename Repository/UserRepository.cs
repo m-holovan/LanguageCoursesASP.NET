@@ -16,5 +16,10 @@ namespace LanguageCourses.Repository
         {
             return _context.Users.ToList();
         }
+
+        public async Task<User> GetUserById(string id)
+        {
+            return _context.Users.FirstOrDefault(u => u.Id == id);
+        }
     }
 }
