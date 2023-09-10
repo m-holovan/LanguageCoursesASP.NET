@@ -19,11 +19,11 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
-            <h1 class="fw-light">Courses near @Model.City, @Model.State</h1>
+            <h1 class="fw-light">Running clubs near @Model.City, @Model.State</h1>
             @if (Model.Courses == null)
             {
                 <h1 class="fw-light">
-                    There are no courses in your area! <a asp-area="" asp-controller="Account"
+                    There are no running clubs in your area! <a asp-area="" asp-controller="Account"
                                                                 asp-action="Login">Login</a> and create one!
                 </h1>
             }
