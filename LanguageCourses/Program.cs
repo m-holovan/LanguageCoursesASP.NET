@@ -8,6 +8,7 @@ using LanguageCourses.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace LanguageCourses
 {
@@ -25,6 +26,7 @@ namespace LanguageCourses
             builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+            builder.Services.Configure<IpInfoSettings>(builder.Configuration.GetSection("IpInfoSettings"));
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -36,7 +38,7 @@ namespace LanguageCourses
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             var app = builder.Build();
-
+            
             if (args.Length == 1 && args[0].ToLower() == "seeddata")
             {
                 //Seed.SeedUsersAndRolesAsync(app);

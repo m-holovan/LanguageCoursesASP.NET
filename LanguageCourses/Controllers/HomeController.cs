@@ -3,6 +3,7 @@ using LanguageCourses.Interfaces;
 using LanguageCourses.Models;
 using LanguageCourses.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Globalization;
@@ -14,11 +15,13 @@ namespace LanguageCourses.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ICourseRepository _courseRepository;
+        private readonly IOptions<IpInfoSettings> _options;
 
-        public HomeController(ILogger<HomeController> logger, ICourseRepository courseRepository)
+        public HomeController(ILogger<HomeController> logger, ICourseRepository courseRepository, IOptions<IpInfoSettings> options)
         {
             _logger = logger;
             _courseRepository = courseRepository;
+            _options = options;
         }
 
         public async Task<IActionResult> Index()
@@ -28,7 +31,11 @@ namespace LanguageCourses.Controllers
 
             try
             {
-                string url = "https://ipinfo.io?token=2aae7c726a664e";
+                IpInfoSettings settings = new IpInfoSettings
+                {
+                    Token = _options.Value.Token
+                };
+                string url = settings.Token;
                 var info = new WebClient().DownloadString(url);
                 ipInfo = JsonConvert.DeserializeObject<IpInfo>(info);
                 RegionInfo regInfo = new RegionInfo(ipInfo.Country);
