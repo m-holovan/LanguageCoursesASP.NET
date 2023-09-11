@@ -42,5 +42,18 @@ namespace LanguageCourses.Tests.Controller
             //Assert - Object check actions
             result.Should().BeOfType<Task<IActionResult>>();
         }
+
+        [Fact]
+        public void CourseController_Detail_ReturnSuccess()
+        {
+            //Arrange
+            var id = 1;
+            var course = A.Fake<Course>();
+            A.CallTo(() => _courseRepository.GetCourseByIdAsync(id)).Returns(course);
+            //Act
+            var result = _courseController.Detail(id);
+            //Assert
+            result.Should().BeOfType<Task<IActionResult>>();
+        }
     }
 }
