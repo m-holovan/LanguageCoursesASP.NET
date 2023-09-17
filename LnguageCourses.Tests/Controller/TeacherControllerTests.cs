@@ -41,5 +41,20 @@ namespace LanguageCourses.Tests.Controller
             //Assert
             result.Should().BeOfType<Task<IActionResult>>();
         }
+
+        [Fact]
+        public void TecherController_Detail_ReturnsSuccess()
+        {
+            //Arrange
+            int id = 1;
+            var teacher = A.Fake<Teacher>();
+            A.CallTo(() => _teacherRepository.GetTeacherById(id)).Returns(teacher);
+
+            //Act
+            var result = _teacherController.Detail(id);
+
+            //Assert
+            result.Should().BeOfType<Task<IActionResult>>();
+        }
     }
 }
