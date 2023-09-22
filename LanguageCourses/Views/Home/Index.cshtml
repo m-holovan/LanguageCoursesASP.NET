@@ -5,7 +5,7 @@
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">RunGroops</h1>
+        <h1 class="jumbotron-heading">Languages courses</h1>
         <p class="lead text-muted">
             Something short and leading about the collection below—its contents, the creator,
             etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.
@@ -19,12 +19,12 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
-            <h1 class="fw-light">Running clubs near @Model.City, @Model.State</h1>
+            <h1 class="fw-light">Languages courses near @Model.City, @Model.State</h1>
             @if (Model.Courses == null)
             {
                 <h1 class="fw-light">
-                    There are no running clubs in your area! <a asp-area="" asp-controller="Account"
-                                                                asp-action="Login">Login</a> and create one!
+                    There are no courses in your area! <a asp-area="" asp-controller="Account"
+                                                          asp-action="Login">Login</a> and create one!
                 </h1>
             }
             else
