@@ -1,0 +1,8 @@
+.start-button {
+    height: 48px;
+    width: 108px;
+    background-color: #EBAD25;
+    border-radius: 10%;
+    color: #fff;
+    border-color: transparent;
+}

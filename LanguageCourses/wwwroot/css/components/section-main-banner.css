@@ -1,0 +1,21 @@
+.main-banner .container {
+    height: 650px;
+}
+
+.main-banner {
+    background-color: #407BFF;
+}
+
+.title-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 44px;
+}
+
+.main-text {
+    padding-top: 190px;
+    color: #FFFFFF;
+}
+
+.additional-text {
+    font-size: 20px;
+}
