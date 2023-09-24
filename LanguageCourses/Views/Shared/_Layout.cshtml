@@ -6,9 +6,9 @@
     <title>@ViewData["Title"] - LanguageCourses</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/LanguageCourses.styles.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/LanguageCourses.styles.css" asp-append-version="true" /> *@
 </head>
-<body>
+<body class="body">
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white">
             <div class="container">
@@ -23,22 +23,22 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#" aria-current="page">
+                            <a class="nav-link active" asp-action="Index" asp-controller="Home" aria-current="page">
                                 Home <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Courses</a>
+                            <a class="nav-link" asp-controller="Course" asp-action="Index">Courses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Teachers</a>
+                            <a class="nav-link" asp-controller="Teacher" asp-action="Index">Teachers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Dashboard</a>
+                            <a class="nav-link" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
                         </li>
                     </ul>
                     <div class="d-flex my-2 my-lg-0">
-                        <a href="#">
+                        <a asp-controller="User" asp-action="Index">
                             <img src="./img/svg/icon-user.svg" alt="user-icon">
                         </a>
                     </div>
@@ -51,10 +51,55 @@
         @RenderBody()
     </main>
 
-
-    <footer class="border-top footer text-muted">
+    <footer class="footer">
         <div class="container">
-            &copy; 2023 - LanguageCourses - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="footer-text pt-5">
+                <ul class="row">
+                    <li class="col-3">
+                        <p>Fluency is nothing more than mastering the 100 most important real-life conversations</p>
+                        <ul class="social-list row">
+                            <li class="col-1">
+                                <a href="#">
+                                    <img src="./img/svg/Facebook.svg">
+                                </a>
+                            </li>
+                            <li class="col-1 mx-2">
+                                <a href="#">
+                                    <img src="./img/svg/LinkedIn.svg">
+                                </a>
+                            </li>
+                            <li class="col-1 mx-2">
+                                <a href="#">
+                                    <img src="./img/svg/Twitter.svg">
+                                </a>
+                            </li>
+                            <li class="col-1 mx-2">
+                                <a href="#">
+                                    <img src="./img/svg/Pinterest.svg">
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="col-3">
+                        <p><strong>Speak up courses</strong></p>
+                        <p class="my-0"><a>Learn english</a></p>
+                        <p class="my-0"><a>Learn german</a></p>
+                        <p class="my-0"><a>Learn french</a></p>
+                    </li>
+                    <li class="col-3">
+                        <p><strong>Products</strong></p>
+                        <p class="my-0"><a>Landing page</a></p>
+                        <p class="my-0"><a>About us</a></p>
+                        <p class="my-0"><a>Contact us</a></p>
+                    </li>
+                    <li class="col-3">
+                        <p><strong>Contact information</strong></p>
+                        <p class="my-0"><a>+32343793486</a></p>
+                        <p class="my-0"><a>Info@speakup.we</a></p>
+                        <p class="my-0"><a>barcelona, C/ de sardenya</a></p>
+                    </li>
+                </ul>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

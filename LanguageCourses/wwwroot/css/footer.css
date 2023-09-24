@@ -1,0 +1,15 @@
+.footer {
+    background-color: #2563EB;
+    height: 265px;
+    color: #fff;
+    position:relative;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+}
