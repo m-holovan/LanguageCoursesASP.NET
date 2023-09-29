@@ -36,6 +36,20 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <form asp-area="" asp-controller="Account" asp-action="Logout">
+                                    <button class="btn btn-outline-danger">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
                     </ul>
                     <div class="d-flex my-2 my-lg-0">
                         <a asp-controller="User" asp-action="Index">
