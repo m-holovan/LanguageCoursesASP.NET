@@ -18,8 +18,8 @@
                                     <a type="button" class="btn btn-primary mx-1" asp-action="Detail" asp-controller="Teacher" asp-route-id="@item.Id">View</a>
                                     @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
                                     {
-                                        <a type="button" class="btn btn-primary mx-1" asp-action="Edit" asp-controller="Course" asp-route-id="@item.Id">Edit</a>
-                                        <a type="button" class="btn btn-primary mx-1" asp-action="Delete" asp-controller="Course" asp-route-id="@item.Id">Delete</a>
+                                        <a type="button" class="btn btn-primary mx-1" asp-action="Edit" asp-controller="Teacher" asp-route-id="@item.Id">Edit</a>
+                                        <a type="button" class="btn btn-primary mx-1" asp-action="Delete" asp-controller="Teacher" asp-route-id="@item.Id">Delete</a>
                                     }
                                 </div>
                                 <small class="text-body-secondary">@item.CourseCategory</small>
