@@ -1,0 +1,10 @@
+﻿.register-image {
+    width: 500px;
+    height: 800px;
+}
+
+.register-form {
+    max-width: 520px;
+    max-height: 800px;
+    background-color: #000000;
+}

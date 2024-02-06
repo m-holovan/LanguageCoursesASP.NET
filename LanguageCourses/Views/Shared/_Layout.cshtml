@@ -13,7 +13,7 @@
         <nav class="navbar navbar-expand-sm navbar-light bg-white">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="./img/svg/logo.svg" alt="logo">
+                    <img src="~/img/svg/logo.svg" alt="logo">
                 </a>
                 <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
@@ -33,11 +33,11 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Teacher" asp-action="Index">Teachers</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
-                        </li>
                         @if (User.Identity.IsAuthenticated)
                         {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                            </li>
                             <li class="nav-item">
                                 <form asp-area="" asp-controller="Account" asp-action="Logout">
                                     <button class="btn btn-outline-danger">Logout</button>
@@ -47,13 +47,13 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                                <a class="btn btn-outline-success" asp-controller="Account" asp-action="Login">Login</a>
                             </li>
                         }
                     </ul>
                     <div class="d-flex my-2 my-lg-0">
                         <a asp-controller="User" asp-action="Index">
-                            <img src="./img/svg/icon-user.svg" alt="user-icon">
+                            <img src="~/img/svg/icon-user.svg" alt="user-icon">
                         </a>
                     </div>
                 </div>
@@ -74,22 +74,22 @@
                         <ul class="social-list row">
                             <li class="col-1">
                                 <a href="#">
-                                    <img src="./img/svg/Facebook.svg">
+                                    <img src="~/img/svg/Facebook.svg">
                                 </a>
                             </li>
                             <li class="col-1 mx-2">
                                 <a href="#">
-                                    <img src="./img/svg/LinkedIn.svg">
+                                    <img src="~/img/svg/LinkedIn.svg">
                                 </a>
                             </li>
                             <li class="col-1 mx-2">
                                 <a href="#">
-                                    <img src="./img/svg/Twitter.svg">
+                                    <img src="~/img/svg/Twitter.svg">
                                 </a>
                             </li>
                             <li class="col-1 mx-2">
                                 <a href="#">
-                                    <img src="./img/svg/Pinterest.svg">
+                                    <img src="~/img/svg/Pinterest.svg">
                                 </a>
                             </li>
                         </ul>
